@@ -3,138 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d0d0f">
+    <meta name="description" content="Un pequeño rincón hecho con cariño, para ti.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Vista previa bonita si se comparte el link -->
+    <meta property="og:title" content="Para ti ❤️">
+    <meta property="og:description" content="Un pequeño lugar donde dejarte un pedacito de mí.">
+    <meta property="og:type" content="website">
 
     <title>Para ti ❤️</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- Corazones flotando -->
-    <div class="hearts"></div>
+    <!-- Fondo decorativo -->
+    <div class="fondo-luz luz-1" aria-hidden="true"></div>
+    <div class="fondo-luz luz-2" aria-hidden="true"></div>
+
+    <!-- Contenedor de corazones flotantes -->
+    <div class="hearts" aria-hidden="true"></div>
 
     <!-- =========================
          INICIO
     ========================== -->
-
     <section id="inicio" class="pantalla activa">
-
         <div class="contenido-inicio">
 
-            <div class="corazon-grande">❤️</div>
+            <div class="etiqueta">
+                <span aria-hidden="true"></span>
+                Un pequeño lugar para ti
+                <span aria-hidden="true"></span>
+            </div>
 
-            <p class="pequeno">Hice este pequeño lugar para ti...</p>
+            <div class="corazon-grande" aria-hidden="true">❤️</div>
 
-            <h1>Para ti, mi amor</h1>
-
-            <p class="subtitulo">
-                Aunque estemos lejos, quería crear un lugar
-                donde pudiera dejarte un pedacito de mí.
+            <p class="pequeno">
+                Para la persona que hace mis días un poquito más bonitos
             </p>
 
-            <button onclick="abrirPagina('dia')">
-                Entrar a nuestro pequeño mundo 💕
+            <h1>
+                Para ti,<br>
+                <span>mi amor.</span>
+            </h1>
+
+            <p class="subtitulo">
+                Aunque existan kilómetros entre nosotros,
+                quería crear un pequeño lugar donde pudiera
+                dejarte un pedacito de mí.
+            </p>
+
+            <button type="button" class="boton-principal" data-page="dia">
+                <span>Entrar a nuestro mundo</span>
+                <b aria-hidden="true">→</b>
             </button>
 
+            <p class="distancia">
+                Hecho desde lejos, pensando en ti. ♡
+            </p>
+
         </div>
-
     </section>
-
 
     <!-- =========================
          NAVEGACIÓN
     ========================== -->
-
-    <nav id="navbar">
-
-        <button onclick="abrirPagina('inicio')">
-            🏠 Inicio
+    <nav id="navbar" aria-label="Navegación principal">
+        <button type="button" data-page="inicio">
+            <span aria-hidden="true">⌂</span>
+            Inicio
         </button>
-
-        <button onclick="abrirPagina('dia')">
-            🌅 Mi día
+        <button type="button" data-page="dia">
+            <span aria-hidden="true">☀</span>
+            Mi día
         </button>
-
-        <button onclick="abrirPagina('pensamientos')">
-            💭 Lo que pienso de ti
+        <button type="button" data-page="pensamientos">
+            <span aria-hidden="true">♡</span>
+            Tú
         </button>
-
-        <button onclick="abrirPagina('canciones')">
-            🎵 Canciones
+        <button type="button" data-page="canciones">
+            <span aria-hidden="true">♫</span>
+            Música
         </button>
-
-        <button onclick="abrirPagina('deseos')">
-            🎁 Tus deseos
+        <button type="button" data-page="deseos">
+            <span aria-hidden="true">♢</span>
+            Deseos
         </button>
-
-        <button onclick="abrirPagina('sorpresa')">
-            💌 Sorpresa
+        <button type="button" data-page="sorpresa">
+            <span aria-hidden="true">✉</span>
+            Sorpresa
         </button>
-
     </nav>
 
+    <main>
 
     <!-- =========================
          MI DÍA
     ========================== -->
-
     <section id="dia" class="pagina">
-
         <div class="tarjeta">
 
-            <span class="emoji">🌅</span>
+            <div class="encabezado">
+                <span class="numero">01</span>
+                <span class="linea"></span>
+                <span class="categoria">MI DÍA</span>
+            </div>
 
-            <h2>Mi día</h2>
+            <span class="emoji-grande" aria-hidden="true">☀️</span>
+
+            <h2>Un poquito de<br><span>mi día para ti</span></h2>
 
             <p class="descripcion">
-                Aquí quiero contarte un poquito de mi día,
-                porque aunque no podamos estar juntos físicamente,
+                Porque aunque no podamos estar juntos físicamente,
                 quiero que formes parte de mis días.
             </p>
 
             <div class="entrada">
+                <div class="fecha">
+                    <span class="fecha-icono" aria-hidden="true">◷</span>
+                    <div>
+                        <strong>Hoy</strong>
+                        <small>Un día cualquiera, pensando en ti</small>
+                    </div>
+                </div>
 
-                <h3>📅 Hoy</h3>
+                <div class="separador"></div>
 
-                <p>
-                    Hoy fue un día bastante normal, pero hubo
-                    momentos en los que pensé en ti.
-                </p>
-
-                <p>
-                    Mientras hacía mis cosas me preguntaba
-                    qué estarías haciendo tú, si habías comido,
-                    cómo estaba tu día...
-                </p>
-
-                <p>
-                    Y sí, probablemente estás cansada de que
-                    piense tanto en ti. Pero no puedo evitarlo ❤️
-                </p>
-
+                <p>Hoy fue un día bastante normal, pero hubo momentos en los que pensé en ti.</p>
+                <p>Mientras hacía mis cosas me preguntaba qué estarías haciendo tú, si habías comido, cómo estaba tu día...</p>
+                <p>Y sí, probablemente estás cansada de que piense tanto en ti. Pero no puedo evitarlo. ❤️</p>
             </div>
 
-            <p class="nota">
-                ✨ Aquí podrás escribir cada día algo nuevo para ella.
-            </p>
+            <div class="nota">
+                <span aria-hidden="true">✦</span>
+                Aquí iré dejando pequeños pedacitos de mis días para ti.
+            </div>
 
         </div>
-
     </section>
-
 
     <!-- =========================
          PENSAMIENTOS
     ========================== -->
-
     <section id="pensamientos" class="pagina">
-
         <div class="tarjeta">
 
-            <span class="emoji">💭</span>
+            <div class="encabezado">
+                <span class="numero">02</span>
+                <span class="linea"></span>
+                <span class="categoria">PARA TI</span>
+            </div>
 
-            <h2>Lo que pienso de ti</h2>
+            <span class="emoji-grande" aria-hidden="true">♡</span>
+
+            <h2>Lo que pienso<br><span>de ti</span></h2>
 
             <p class="descripcion">
                 Hay cosas que quizás no te digo todos los días,
@@ -142,414 +169,150 @@
             </p>
 
             <div class="pensamiento">
-
-                <span>❤️</span>
-
-                <p>
-                    Me gusta la forma en la que haces que incluso
-                    la distancia se sienta un poquito más pequeña.
-                </p>
-
+                <div class="pensamiento-numero">01</div>
+                <div class="pensamiento-icono" aria-hidden="true">❤️</div>
+                <div><p>Me gusta la forma en la que haces que incluso la distancia se sienta un poquito más pequeña.</p></div>
             </div>
 
             <div class="pensamiento">
-
-                <span>🌙</span>
-
-                <p>
-                    A veces antes de dormir pienso en cómo sería
-                    poder simplemente estar a tu lado.
-                </p>
-
+                <div class="pensamiento-numero">02</div>
+                <div class="pensamiento-icono" aria-hidden="true">🌙</div>
+                <div><p>A veces antes de dormir pienso en cómo sería poder simplemente estar a tu lado.</p></div>
             </div>
 
             <div class="pensamiento">
-
-                <span>🥰</span>
-
-                <p>
-                    Me encanta conocerte cada día un poco más.
-                    Incluso las pequeñas cosas que me cuentas
-                    terminan siendo importantes para mí.
-                </p>
-
+                <div class="pensamiento-numero">03</div>
+                <div class="pensamiento-icono" aria-hidden="true">🥰</div>
+                <div><p>Me encanta conocerte cada día un poco más. Incluso las pequeñas cosas que me cuentas terminan siendo importantes para mí.</p></div>
             </div>
 
             <div class="pensamiento">
-
-                <span>🫶</span>
-
-                <p>
-                    La distancia no cambia lo mucho que significas
-                    para mí.
-                </p>
-
+                <div class="pensamiento-numero">04</div>
+                <div class="pensamiento-icono" aria-hidden="true">🫶</div>
+                <div><p>La distancia no cambia lo mucho que significas para mí.</p></div>
             </div>
 
         </div>
-
     </section>
-
-
-  <!-- =========================
-     CANCIONES
-========================== -->
-
-<section id="canciones" class="pagina">
-
-    <div class="tarjeta">
-
-        <span class="emoji">🎵</span>
-
-        <h2>Canciones para ti</h2>
-
-        <p class="descripcion">
-            Canciones que encontré, escuché y pensé:
-            "esta tengo que dedicársela a ella". ❤️
-        </p>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Amor</h3>
-                <p>Emmanuel Cortes</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Rude</h3>
-                <p>MAGIC!</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Cosas que no te dije</h3>
-                <p>Saico</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>MAI</h3>
-                <p>Milo J</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Lo que siento</h3>
-                <p>Cuco</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Amor de Lejos</h3>
-                <p>Wicho Kun</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Nuestro Juramento</h3>
-                <p>Julio Jaramillo</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Suiza</h3>
-                <p>Calle 24</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Visita</h3>
-                <p>Enjambre</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Soñé</h3>
-                <p>Zoé</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Magia</h3>
-                <p>Ed Maverick</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <div class="cancion">
-            <div class="icono-musica">🎵</div>
-            <div>
-                <h3>Hundred Miles</h3>
-                <p>Yall & Gabriela Richardson</p>
-                <a href="#" target="_blank">Escuchar canción</a>
-            </div>
-        </div>
-
-
-        <p class="nota">
-            🎧 Cada una tiene un pedacito de lo que siento por ti.
-        </p>
-
-    </div>
-
-</section>
 
     <!-- =========================
-         DESEOS / REGALOS
+         CANCIONES
     ========================== -->
-<section id="deseos" class="pagina">
+    <section id="canciones" class="pagina">
+        <div class="tarjeta tarjeta-musica">
 
-    <div class="tarjeta">
-
-        <span class="emoji">🎁</span>
-
-        <h2>Tus deseos</h2>
-
-        <p class="descripcion">
-            Una pequeña lista de todas esas cosas que quieres,
-            sueñas o algún día me gustaría darte. ❤️
-        </p>
-
-
-        <div class="deseo">
-            <div class="check">🦄</div>
-
-            <div>
-                <h3>Un pony</h3>
-                <p>Porque aparentemente un pony es completamente necesario. 😂❤️</p>
+            <div class="encabezado">
+                <span class="numero">03</span>
+                <span class="linea"></span>
+                <span class="categoria">NUESTRA MÚSICA</span>
             </div>
-        </div>
 
+            <span class="emoji-grande" aria-hidden="true">♫</span>
 
-        <div class="deseo">
-            <div class="check">🐔</div>
+            <h2>Canciones<br><span>para ti</span></h2>
 
-            <div>
-                <h3>Un pollo rosa</h3>
-                <p>Un pollo. Rosa. No se aceptan sustitutos.</p>
+            <p class="descripcion">
+                Canciones que encontré, escuché y pensé:
+                <em>"esta tengo que dedicársela a ella."</em>
+            </p>
+
+            <div class="lista-canciones"></div>
+
+            <div class="nota">
+                <span aria-hidden="true">♫</span>
+                Cada canción tiene un pedacito de lo que siento por ti.
             </div>
+
         </div>
-
-
-        <div class="deseo">
-            <div class="check">🧸</div>
-
-            <div>
-                <h3>Un Lotso de 3 metros</h3>
-                <p>Porque uno de tamaño normal aparentemente no es suficiente. 😭</p>
-            </div>
-        </div>
-
-
-        <div class="deseo">
-            <div class="check">🐿️</div>
-
-            <div>
-                <h3>Una ardilla</h3>
-                <p>Algún día tendremos que conseguir esa ardilla. 😂</p>
-            </div>
-        </div>
-
-
-        <div class="deseo">
-            <div class="check">🦊</div>
-
-            <div>
-                <h3>Un zorro</h3>
-                <p>Otro integrante para nuestra colección de deseos. ❤️</p>
-            </div>
-        </div>
-
-
-        <div class="deseo">
-            <div class="check">🐷</div>
-
-            <div>
-                <h3>Un peyo</h3>
-                <p>Este también queda oficialmente apuntado. 🥹</p>
-            </div>
-        </div>
-
-
-        <div class="deseo">
-            <div class="check">🚂</div>
-
-            <div>
-                <h3>Un paseo en tren</h3>
-                <p>Uno de esos paseos que algún día podremos hacer juntos.</p>
-            </div>
-        </div>
-
-
-        <div class="deseo">
-            <div class="check">💍</div>
-
-            <div>
-                <h3>Casarse conmigo</h3>
-                <p>Este deseo espero que sea de los dos. ❤️</p>
-            </div>
-        </div>
-
-
-        <div class="deseo">
-            <div class="check">🎀</div>
-
-            <div>
-                <h3>Regalitos de novia</h3>
-                <p>Pequeños detalles para consentirte como te mereces.</p>
-            </div>
-        </div>
-
-
-        <div class="deseo">
-            <div class="check">🧥</div>
-
-            <div>
-                <h3>Una chaqueta mía</h3>
-                <p>Para que tengas algo mío cuando yo no pueda estar ahí.</p>
-            </div>
-        </div>
-
-
-        <div class="deseo">
-            <div class="check">🌷</div>
-
-            <div>
-                <h3>Flores</h3>
-                <p>Porque siempre habrá una razón para regalarte flores.</p>
-            </div>
-        </div>
-
-
-        <div class="deseo">
-            <div class="check">🧸</div>
-
-            <div>
-                <h3>Un muñeco de Milo J</h3>
-                <p>Este también queda guardado en la lista. ❤️</p>
-            </div>
-        </div>
-
-
-        <p class="nota">
-            📝 Lista de deseos: algún día vamos a ir tachando
-            estas cosas una por una.
-        </p>
-
-    </div>
-
     </section>
 
+    <!-- =========================
+         DESEOS
+    ========================== -->
+    <section id="deseos" class="pagina">
+        <div class="tarjeta">
+
+            <div class="encabezado">
+                <span class="numero">04</span>
+                <span class="linea"></span>
+                <span class="categoria">LISTA DE DESEOS</span>
+            </div>
+
+            <span class="emoji-grande" aria-hidden="true">🎁</span>
+
+            <h2>Cositas que<br><span>quieres</span></h2>
+
+            <p class="descripcion">
+                Una lista de esas cosas que algún día espero poder tachar contigo.
+            </p>
+
+            <div class="deseo"><div class="check" aria-hidden="true">🦄</div><div><h3>Un pony</h3><p>Porque aparentemente necesitamos un pony. 😂❤️</p></div></div>
+            <div class="deseo"><div class="check" aria-hidden="true">🐔</div><div><h3>Un pollo rosa</h3><p>Un pollo. Rosa. No se aceptan sustitutos.</p></div></div>
+            <div class="deseo"><div class="check" aria-hidden="true">🧸</div><div><h3>Un Lotso de 3 metros</h3><p>Porque uno normal claramente no es suficiente. 😭</p></div></div>
+            <div class="deseo"><div class="check" aria-hidden="true">🐿️</div><div><h3>Una ardilla</h3><p>Este deseo queda oficialmente apuntado.</p></div></div>
+            <div class="deseo"><div class="check" aria-hidden="true">🦊</div><div><h3>Un zorro</h3><p>Otro integrante de nuestra lista de deseos. ❤️</p></div></div>
+            <div class="deseo"><div class="check" aria-hidden="true">🐷</div><div><h3>Un peyo</h3><p>Este también queda guardado. 🥹</p></div></div>
+            <div class="deseo"><div class="check" aria-hidden="true">🚂</div><div><h3>Un paseo en tren</h3><p>Uno de esos paseos que algún día haremos juntos.</p></div></div>
+            <div class="deseo especial"><div class="check" aria-hidden="true">💍</div><div><h3>Casarse conmigo</h3><p>Este deseo espero que sea de los dos. ❤️</p></div></div>
+            <div class="deseo"><div class="check" aria-hidden="true">🎀</div><div><h3>Regalitos de novia</h3><p>Pequeños detalles para consentirte.</p></div></div>
+            <div class="deseo"><div class="check" aria-hidden="true">🧥</div><div><h3>Una chaqueta mía</h3><p>Para que tengas algo mío cuando yo no pueda estar ahí.</p></div></div>
+            <div class="deseo"><div class="check" aria-hidden="true">🌷</div><div><h3>Flores</h3><p>Porque siempre habrá una razón para regalarte flores.</p></div></div>
+            <div class="deseo"><div class="check" aria-hidden="true">🧸</div><div><h3>Un muñeco de Milo J</h3><p>Este también está oficialmente en la lista. ❤️</p></div></div>
+
+            <div class="nota">
+                <span aria-hidden="true">✦</span>
+                Algún día vamos a ir tachando estas cosas una por una.
+            </div>
+
+        </div>
+    </section>
 
     <!-- =========================
          SORPRESA
     ========================== -->
-
     <section id="sorpresa" class="pagina">
-
         <div class="tarjeta sorpresa">
 
-            <span class="emoji">💌</span>
+            <div class="encabezado">
+                <span class="numero">05</span>
+                <span class="linea"></span>
+                <span class="categoria">SOLO PARA TI</span>
+            </div>
 
-            <h2>Tengo algo para ti...</h2>
+            <div class="sobre" aria-hidden="true">✉</div>
 
-            <p>
-                Hay algo que quiero decirte,
-                pero tendrás que abrirlo.
+            <h2>Tengo algo<br><span>para ti...</span></h2>
+
+            <p class="descripcion">
+                Hay algo que quiero decirte, pero tendrás que abrirlo.
             </p>
 
-            <button onclick="mostrarSorpresa()">
-                Abrir mi mensaje ❤️
+            <button type="button" class="boton-principal" id="boton-sorpresa">
+                <span>Abrir mi mensaje</span>
+                <b aria-hidden="true">♡</b>
             </button>
 
-
-            <div id="mensaje-secreto">
-
+            <div id="mensaje-secreto" role="region" aria-live="polite">
+                <div class="corazon-mensaje" aria-hidden="true">♡</div>
                 <h3>Para ti ❤️</h3>
-
-                <p>
-                    Si estás leyendo esto significa que llegaste
-                    hasta aquí.
-                </p>
-
-                <p>
-                    Quiero que recuerdes algo:
-                    aunque ahora haya kilómetros entre nosotros,
-                    sigues teniendo un lugar muy cerca de mí.
-                </p>
-
-                <p>
-                    Espero que algún día podamos mirar atrás,
-                    ver todo lo que vivimos a distancia
-                    y decir:
-                </p>
-
-                <h3>
-                    "Valió la pena esperar." ❤️
-                </h3>
-
-                <p>
-                    Te quiero muchísimo.
-                </p>
-
+                <p>Si estás leyendo esto significa que llegaste hasta aquí.</p>
+                <p>Quiero que recuerdes algo: aunque ahora haya kilómetros entre nosotros, sigues teniendo un lugar muy cerca de mí.</p>
+                <p>Espero que algún día podamos mirar atrás, ver todo lo que vivimos a distancia y decir:</p>
+                <div class="frase-final">"Valió la pena esperar."</div>
+                <p>Te quiero muchísimo. ❤️</p>
             </div>
 
         </div>
-
     </section>
 
+    </main>
 
     <footer>
-
-        Hecho con ❤️ para ti
-
+        <span aria-hidden="true">♡</span>
+        Hecho con amor, desde lejos.
+        <span aria-hidden="true">♡</span>
     </footer>
 
-
     <script src="script.js"></script>
-
 </body>
 </html>
