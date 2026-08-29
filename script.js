@@ -15,6 +15,7 @@ const canciones = [
     { titulo: "Soñé", artista: "Zoé" },
     { titulo: "Magia", artista: "Ed Maverick" },
     { titulo: "Hundred Miles", artista: "Yall & Gabriela Richardson" },
+    { titulo: "Promise", artista: "Romeo Santos & Rusher" },
 ];
 
 /* ===============================
