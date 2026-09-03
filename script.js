@@ -176,7 +176,7 @@ document.addEventListener("visibilitychange", () => {
    Formato de fecha: "YYYY-MM-DD"
 =============================== */
 const diario = {
-    2026-04-10": {
+    "2026-04-10": {
         titulo: "Un recuerdo bonito",
         texto: "Otro pedacito de nosotros, guardado para siempre en este pequeño calendario."
     },
