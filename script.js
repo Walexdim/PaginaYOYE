@@ -130,12 +130,12 @@ function mostrarSorpresa() {
     }, 150);
 }
 
-document.getElementById("boton-sorpresa")?.addEventListener("click", mostrarSorpresa);
-
 /* ===============================
    CORAZONES FLOTANTES
 =============================== */
-const contenedorCorazones = document.querySelector(".hearts");
+// Se declaran aquí pero se asignan dentro de DOMContentLoaded (más abajo),
+// para no depender de si el <script> está en el <head> o al final del body.
+let contenedorCorazones = null;
 const simbolosCorazon = ["♡", "♥", "❤"];
 
 function crearCorazon() {
@@ -214,7 +214,7 @@ const diario = {
 
     "2026-09-08": {
         titulo: "You",
-        texto: "8 de septiembre y sigo aquí, otro día en el mismo cuarto, otra noche pensando en ti, otro día pensando en cuánto faltará para besarte, otra noche que espero poder abrazarte, intento a no acostumbrarme, porque deseo cada minuto volver a saber de ti, y poder acercarme más a ti, no he escrito y no se que pase con nosotros, mi cabeza le da mucha mente a cosas que talvez ... No lo sé, espero estar en tu mente tanto como tú lo estás en la mía, está semana ha sido algo triste, y monótona ... Mejor dicho, la que paso, me puse a tomar no porque me sintiera triste, sino porque justo estaba muy cansado y me dijo mi primo ven a tomar unas dos y para no estar en mi casa dije bueno, nos quedamos solo los dos los demás se fueron y terminé hablándole de ti, le decía quiero irme allá y el me decía vamos la siguiente semana y yo le dije tienes otras cosas que hacer y me dijo no importa nos vamos jaja borracho loco, quería saber de ti, que cuando ví a tu hermana en live me metí a escribir a ver si sabía algo nuevo de ti, y me dijo que le has hecho sospechar de que tienes alguien más Pero que no confirmabas nada, me sentí mas mal, le dije, dile que la amo, que es el amor de mi vida, que me casare contigo, y le decía le dedico esta canción a ella, la que dice QUIERO SABER DE TI QUIERO SABER QUE SIENTES GANAS DE CONTINUAR QUIERO SABER SI ESTANDO LEJOS PENSASTE EN MI ... Todo loco y borracho , como la canción que un día te dedique (ya borracho), en fin te extraño, y no puedo evitar llorar de la impotencia, pensé en varias alternativas, y mi primo me decía ... Me acabe de tatuar y se había hecho a la santa muerte y me dijo si tú le pides algo con toda la devoción ella te cumple, y me metí la idea de hacerlo, Pero dije ... Tendre que obligarla a amarme ? ... Te extraño demaciado, a veces quiero que me digas que aún sigues aquí, y que lo borres para ti, que me digas que no te responda el mensaje, Pero quiero saberlo, o a veces pienso que te rendiste que crees que no sera posible que me dejen verte, PERO NO ME HAS DEJADO INTENTARLO Diosito lindo ayúdame con lo que siento dentro de mi corazón, ayúdame, ayúdame a cumplir mis anhelos, todo lo que deseo es ella."
+        texto: "8 de septiembre y sigo aquí, otro día en el mismo cuarto, otra noche pensando en ti, otro día pensando en cuánto faltará para besarte, otra noche que espero poder abrazarte, intento a no acostumbrarme, porque deseo cada minuto volver a saber de ti, y poder acercarme más a ti, no he escrito y no se que pase con nosotros, mi cabeza le da mucha mente a cosas que talvez ... No lo sé, espero estar en tu mente tanto como tú lo estás en la mía, está semana ha sido algo triste, y monótona ... Mejor dicho, la que paso, me puse a tomar no porque me sintiera triste, sino porque justo estaba muy cansado y me dijo mi primo ven a tomar unas dos y para no estar en mi casa dije bueno, nos quedamos solo los dos los demás se fueron y terminé hablándole de ti, le decía quiero irme allá y el me decía vamos la siguiente semana y yo le dije tienes otras cosas que hacer y me dijo no importa nos vamos jaja borracho loco, quería saber de ti, que cuando ví a tu hermana en live me metí a escribir a ver si sabía algo nuevo de ti, y me dijo que le has hecho sospechar de que tienes alguien más Pero que no confirmabas nada, me sentí mas mal, le dije, dile que la amo, que es el amor de mi vida, que me casare contigo, y le decía le dedico esta canción a ella, la que dice QUIERO SABER DE TI QUIERO SABER QUE SIENTES GANAS DE CONTINUAR QUIERO SABER SI ESTANDO LEJOS PENSASTE EN MI ... Todo loco y borracho , como la canción que un día te dedique " Ya borracho ", en fin te extraño, y no puedo evitar llorar de la impotencia, pensé en varias alternativas, y mi primo me decía ... Me acabe de tatuar y se había hecho a la santa muerte y me dijo si tú le pides algo con toda la devoción ella te cumple, y me metí la idea de hacerlo, Pero dije ... Tendre que obligarla a amarme ? ... Te extraño demaciado, a veces quiero que me digas que aún sigues aquí, y que lo borres para ti, que me digas que no te responda el mensaje, Pero quiero saberlo, o a veces pienso que te rendiste que crees que no sera posible que me dejen verte, PERO NO ME HAS DEJADO INTENTARLO Diosito lindo ayúdame con lo que siento dentro de mi corazón, ayúdame, ayúdame a cumplir mis anhelos, todo lo que deseo es ella."
     }
 
 };
@@ -334,7 +334,8 @@ function renderizarCalendarioDiario() {
 /* ===============================
    MODAL DE RECUERDOS
 =============================== */
-const modalRecuerdo = document.getElementById("modal-recuerdo");
+// Igual que contenedorCorazones: se asigna dentro de DOMContentLoaded.
+let modalRecuerdo = null;
 
 function abrirModalRecuerdo(clave) {
     const recuerdo = diario[clave];
@@ -363,15 +364,6 @@ function cerrarModalRecuerdo() {
     document.body.classList.remove("modal-abierto");
 }
 
-document.getElementById("calendario-diario")?.addEventListener("click", (evento) => {
-    const celda = evento.target.closest(".calendario-dia.con-recuerdo");
-    if (celda?.dataset.fecha) abrirModalRecuerdo(celda.dataset.fecha);
-});
-
-modalRecuerdo?.addEventListener("click", (evento) => {
-    if (evento.target.closest("[data-cerrar-modal]")) cerrarModalRecuerdo();
-});
-
 document.addEventListener("keydown", (evento) => {
     if (evento.key === "Escape" && modalRecuerdo?.classList.contains("activo")) {
         cerrarModalRecuerdo();
@@ -382,6 +374,31 @@ document.addEventListener("keydown", (evento) => {
    INICIO
 =============================== */
 document.addEventListener("DOMContentLoaded", () => {
+    // Se asignan aquí, ya con el HTML completamente cargado, sin importar
+    // en qué parte del documento esté colocado este <script>.
+    contenedorCorazones = document.querySelector(".hearts");
+    modalRecuerdo = document.getElementById("modal-recuerdo");
+
+    // Los corazones y los fondos decorativos son visuales, no interactivos.
+    // Si el CSS no les puso pointer-events: none, pueden quedar flotando
+    // encima de botones reales y "robarles" el clic. Esto lo garantiza
+    // desde JS sin depender de que el CSS lo tenga bien puesto.
+    if (contenedorCorazones) contenedorCorazones.style.pointerEvents = "none";
+    document.querySelectorAll(".fondo-luz").forEach((el) => {
+        el.style.pointerEvents = "none";
+    });
+
+    document.getElementById("boton-sorpresa")?.addEventListener("click", mostrarSorpresa);
+
+    document.getElementById("calendario-diario")?.addEventListener("click", (evento) => {
+        const celda = evento.target.closest(".calendario-dia.con-recuerdo");
+        if (celda?.dataset.fecha) abrirModalRecuerdo(celda.dataset.fecha);
+    });
+
+    modalRecuerdo?.addEventListener("click", (evento) => {
+        if (evento.target.closest("[data-cerrar-modal]")) cerrarModalRecuerdo();
+    });
+
     renderizarCanciones();
     renderizarCalendarioDiario();
 
