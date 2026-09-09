@@ -16,6 +16,10 @@ const canciones = [
     { titulo: "Magia", artista: "Ed Maverick" },
     { titulo: "Hundred Miles", artista: "Yall & Gabriela Richardson" },
     { titulo: "Promise", artista: "Romeo Santos & Rusher" },
+    { titulo: "IMU", artista: "Jorge Cuellar & Ysrael Barajas" },
+    { titulo: "Ojitos Lindos", artista: "Bad Bunny" },
+    { titulo: "No podran separarnos", artista: "Jimmy Zambrano y Jorge Celedón" },
+   
 ];
 
 /* ===============================
