@@ -19,7 +19,7 @@ const canciones = [
     { titulo: "IMU", artista: "Jorge Cuellar & Ysrael Barajas" },
     { titulo: "Ojitos Lindos", artista: "Bad Bunny" },
     { titulo: "No podran separarnos", artista: "Jimmy Zambrano y Jorge Celedón" },
-   
+
 ];
 
 /* ===============================
@@ -115,6 +115,13 @@ function mostrarSorpresa() {
     const mensaje = document.getElementById("mensaje-secreto");
     if (!mensaje) return;
 
+    // Si ya está visible, evita acumular corazones extra con clics repetidos:
+    // simplemente vuelve a llevar la vista al mensaje.
+    if (mensaje.classList.contains("visible")) {
+        mensaje.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+    }
+
     mensaje.classList.add("visible");
     crearCorazones(20);
 
@@ -139,12 +146,17 @@ function crearCorazon() {
     heart.textContent = simbolosCorazon[Math.floor(Math.random() * simbolosCorazon.length)];
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.fontSize = Math.random() * 15 + 10 + "px";
-    heart.style.animationDuration = Math.random() * 6 + 7 + "s";
     heart.style.color = Math.random() > 0.5 ? "#f08aa9" : "#9d8cff";
+
+    // Se calcula una sola vez para que la duración de la animación CSS
+    // y el momento de eliminar el nodo del DOM queden siempre sincronizados.
+    const duracionSegundos = Math.random() * 6 + 7; // entre 7s y 13s
+    heart.style.animationDuration = duracionSegundos + "s";
 
     contenedorCorazones.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 14000);
+    // Margen de 500ms de seguridad para asegurar que la animación ya terminó.
+    setTimeout(() => heart.remove(), duracionSegundos * 1000 + 500);
 }
 
 function crearCorazones(cantidad) {
@@ -199,12 +211,12 @@ const diario = {
         titulo: "Un día pensativo",
         texto: "Me siento de la basura, no sé qué me pasa, y pues tiene que ver bastante contigo, pienso muchas cosas, mares de dudas, cosas que me imagino y que talvez no haya nada que ver pero aun así me hace sentir mal, ayer lloré porque venía reteniéndolo mucho tiempo, y bueno, no sé qué estará pasando contigo, me da rabia no saber de ti, ni una pizca, me da rabia no saber porque cambiaste nuestra fecha, me da rabia no saber y pensar, y dije, tendrá otro, no lo sé, y me pongo a recordar tus palabras de que no amarías a nadie más que no sea yo y luego pienso que todos nos cansamos de lo mismo y talvez buscar otra alternativa suena a una salida a todo esto, y también pienso que podrías hacer tales cosas por mi bien entre comillas pero yo solo quiero seguir, y no rendirme, tengo muchos pensamientos y no sé a quién contárselos, estar en la casa me pone triste por eso busco salir ayudarle a mi madre en el trabajo o los días que salgo a las prácticas igual me hacen sentir con la mente ocupada, pero de igual manera estás ahí porque siempre ando pensando que harás, subo cualquier tontería con tal de que sepas de que pienso en ti, y vaya, hoy solamente fui con mi madre, retiré una tarjeta de crédito que solicité, y regresé a mi casa, comí y ya, quiero verte quiero estar ahí, y falta para poder ir, pero llegará ese día, solo quisiera hablar contigo un momento, en fin, no sé, a veces dudo, así como tú talvez pienses cosas como las que me dijiste el otro día de que yo esté con alguien más jaja y yo aquí pensando qué hacer para poder conseguir más dinero a ver si me puedo quedar un día más allá."
     },
-   
+
     "2026-09-08": {
         titulo: "You",
-        texto: "8 de septiembre y sigo aquí, otro día en el mismo cuarto, otra noche pensando en ti, otro día pensando en cuánto faltará para besarte, otra noche que espero poder abrazarte, intento a no acostumbrarme, porque deseo cada minuto volver a saber de ti, y poder acercarme más a ti, no he escrito y no se que pase con nosotros, mi cabeza le da mucha mente a cosas que talvez ... No lo sé, espero estar en tu mente tanto como tú lo estás en la mía, está semana ha sido algo triste, y monótona ... Mejor dicho, la que paso, me puse a tomar no porque me sintiera triste, sino porque justo estaba muy cansado y me dijo mi primo ven a tomar unas dos y para no estar en mi casa dije bueno, nos quedamos solo los dos los demás se fueron y terminé hablándole de ti, le decía quiero irme allá y el me decía vamos la siguiente semana y yo le dije tienes otras cosas que hacer y me dijo no importa nos vamos jaja borracho loco, quería saber de ti, que cuando ví a tu hermana en live me metí a escribir a ver si sabía algo nuevo de ti, y me dijo que le has hecho sospechar de que tienes alguien más Pero que no confirmabas nada, me sentí mas mal, le dije, dile que la amo, que es el amor de mi vida, que me casare contigo, y le decía le dedico esta canción a ella, la que dice QUIERO SABER DE TI QUIERO SABER QUE SIENTES GANAS DE CONTINUAR QUIERO SABER SI ESTANDO LEJOS PENSASTE EN MI ... Todo loco y borracho , como la canción que un día te dedique " Ya borracho ", en fin te extraño, y no puedo evitar llorar de la impotencia, pensé en varias alternativas, y mi primo me decía ... Me acabe de tatuar y se había hecho a la santa muerte y me dijo si tú le pides algo con toda la devoción ella te cumple, y me metí la idea de hacerlo, Pero dije ... Tendre que obligarla a amarme ? ... Te extraño demaciado, a veces quiero que me digas que aún sigues aquí, y que lo borres para ti, que me digas que no te responda el mensaje, Pero quiero saberlo, o a veces pienso que te rendiste que crees que no sera posible que me dejen verte, PERO NO ME HAS DEJADO INTENTARLO Diosito lindo ayúdame con lo que siento dentro de mi corazón, ayúdame, ayúdame a cumplir mis anhelos, todo lo que deseo es ella."
+        texto: "8 de septiembre y sigo aquí, otro día en el mismo cuarto, otra noche pensando en ti, otro día pensando en cuánto faltará para besarte, otra noche que espero poder abrazarte, intento a no acostumbrarme, porque deseo cada minuto volver a saber de ti, y poder acercarme más a ti, no he escrito y no se que pase con nosotros, mi cabeza le da mucha mente a cosas que talvez ... No lo sé, espero estar en tu mente tanto como tú lo estás en la mía, está semana ha sido algo triste, y monótona ... Mejor dicho, la que paso, me puse a tomar no porque me sintiera triste, sino porque justo estaba muy cansado y me dijo mi primo ven a tomar unas dos y para no estar en mi casa dije bueno, nos quedamos solo los dos los demás se fueron y terminé hablándole de ti, le decía quiero irme allá y el me decía vamos la siguiente semana y yo le dije tienes otras cosas que hacer y me dijo no importa nos vamos jaja borracho loco, quería saber de ti, que cuando ví a tu hermana en live me metí a escribir a ver si sabía algo nuevo de ti, y me dijo que le has hecho sospechar de que tienes alguien más Pero que no confirmabas nada, me sentí mas mal, le dije, dile que la amo, que es el amor de mi vida, que me casare contigo, y le decía le dedico esta canción a ella, la que dice QUIERO SABER DE TI QUIERO SABER QUE SIENTES GANAS DE CONTINUAR QUIERO SABER SI ESTANDO LEJOS PENSASTE EN MI ... Todo loco y borracho , como la canción que un día te dedique (ya borracho), en fin te extraño, y no puedo evitar llorar de la impotencia, pensé en varias alternativas, y mi primo me decía ... Me acabe de tatuar y se había hecho a la santa muerte y me dijo si tú le pides algo con toda la devoción ella te cumple, y me metí la idea de hacerlo, Pero dije ... Tendre que obligarla a amarme ? ... Te extraño demaciado, a veces quiero que me digas que aún sigues aquí, y que lo borres para ti, que me digas que no te responda el mensaje, Pero quiero saberlo, o a veces pienso que te rendiste que crees que no sera posible que me dejen verte, PERO NO ME HAS DEJADO INTENTARLO Diosito lindo ayúdame con lo que siento dentro de mi corazón, ayúdame, ayúdame a cumplir mis anhelos, todo lo que deseo es ella."
     }
-   
+
 };
 
 const MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -242,25 +254,28 @@ function crearCeldaDia(año, mesIndex, dia) {
 }
 
 function crearMes(año, mesIndex) {
-    const mes = document.createElement("div");
-    mes.className = "calendario-mes";
+    const contenedorMes = document.createElement("div");
+    contenedorMes.className = "calendario-mes";
 
     const titulo = document.createElement("div");
     titulo.className = "calendario-mes-titulo";
     titulo.textContent = MESES[mesIndex];
-    mes.appendChild(titulo);
+    contenedorMes.appendChild(titulo);
 
     const filaSemana = document.createElement("div");
     filaSemana.className = "calendario-dias-semana";
+    const fragmentoSemana = document.createDocumentFragment();
     DIAS_SEMANA.forEach((d) => {
         const span = document.createElement("span");
         span.textContent = d;
-        filaSemana.appendChild(span);
+        fragmentoSemana.appendChild(span);
     });
-    mes.appendChild(filaSemana);
+    filaSemana.appendChild(fragmentoSemana);
+    contenedorMes.appendChild(filaSemana);
 
     const grid = document.createElement("div");
     grid.className = "calendario-grid";
+    const fragmentoGrid = document.createDocumentFragment();
 
     // Date con año/mes/día numéricos usa la hora LOCAL, no UTC:
     // así evitamos que el primer/último día del mes se corra.
@@ -270,15 +285,16 @@ function crearMes(año, mesIndex) {
     for (let i = 0; i < primerDiaSemana; i++) {
         const vacio = document.createElement("div");
         vacio.className = "calendario-dia vacio";
-        grid.appendChild(vacio);
+        fragmentoGrid.appendChild(vacio);
     }
 
     for (let dia = 1; dia <= totalDias; dia++) {
-        grid.appendChild(crearCeldaDia(año, mesIndex, dia));
+        fragmentoGrid.appendChild(crearCeldaDia(año, mesIndex, dia));
     }
 
-    mes.appendChild(grid);
-    return mes;
+    grid.appendChild(fragmentoGrid);
+    contenedorMes.appendChild(grid);
+    return contenedorMes;
 }
 
 function renderizarCalendarioDiario() {
@@ -286,6 +302,9 @@ function renderizarCalendarioDiario() {
     if (!contenedor) return;
 
     contenedor.innerHTML = "";
+    // Se construye todo en un DocumentFragment y se inserta una sola vez,
+    // en lugar de ir agregando nodos al DOM real uno por uno.
+    const fragmentoAños = document.createDocumentFragment();
 
     obtenerAñosDelDiario().forEach((año) => {
         const bloqueAño = document.createElement("div");
@@ -298,14 +317,18 @@ function renderizarCalendarioDiario() {
 
         const gridMeses = document.createElement("div");
         gridMeses.className = "calendario-meses-grid";
+        const fragmentoMeses = document.createDocumentFragment();
 
         for (let m = 0; m < 12; m++) {
-            gridMeses.appendChild(crearMes(año, m));
+            fragmentoMeses.appendChild(crearMes(año, m));
         }
 
+        gridMeses.appendChild(fragmentoMeses);
         bloqueAño.appendChild(gridMeses);
-        contenedor.appendChild(bloqueAño);
+        fragmentoAños.appendChild(bloqueAño);
     });
+
+    contenedor.appendChild(fragmentoAños);
 }
 
 /* ===============================
